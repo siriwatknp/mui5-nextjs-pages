@@ -1,14 +1,20 @@
-import { Html, Head, Main, NextScript, DocumentProps } from "next/document";
+import {
+  Html,
+  Head,
+  Main,
+  NextScript,
+  DocumentProps,
+  DocumentContext,
+} from "next/document";
 
 import {
   DocumentHeadTags,
   documentGetInitialProps,
   createEmotionCache,
+  DocumentHeadTagsProps,
 } from "@mui/material-nextjs/v15-pagesRouter";
 
-export default function Document(
-  props: DocumentProps & { emotionStyleTags: any }
-) {
+export default function Document(props: DocumentProps & DocumentHeadTagsProps) {
   return (
     <Html lang="en">
       <Head>
@@ -22,7 +28,7 @@ export default function Document(
   );
 }
 
-Document.getInitialProps = async (ctx: any) => {
+Document.getInitialProps = async (ctx: DocumentContext) => {
   const finalProps = await documentGetInitialProps(ctx, {
     emotionCache: createEmotionCache({ key: "mui", enableCssLayer: true }),
   });
