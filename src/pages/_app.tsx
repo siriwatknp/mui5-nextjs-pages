@@ -10,6 +10,7 @@ import type { AppProps } from "next/app";
 const clientCache = createEmotionCache({ key: "mui", enableCssLayer: true });
 
 const theme = createTheme({
+  cssVariables: true,
   modularCssLayers: "@layer theme, base, mui, components, utilities;",
   palette: {
     primary: {
